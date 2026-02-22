@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lamp Login</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:#081420;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:sans-serif;
+}
+
+.container{
+  display:flex;
+  align-items:center;
+  gap:100px;
+}
+
+/* Lamp */
+.lamp{
+  position:relative;
+  cursor:pointer;
+}
+
+.top{
+  width:120px;
+  height:80px;
+  background:#ddd;
+  border-radius:60px 60px 20px 20px;
+  position:relative;
+  text-align:center;
+}
+
+.stand{
+  width:10px;
+  height:80px;
+  background:#ccc;
+  margin:auto;
+}
+
+.base{
+  width:60px;
+  height:15px;
+  background:#ccc;
+  margin:auto;
+  border-radius:10px;
+}
+
+.light{
+  position:absolute;
+  top:80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle, rgba(255,255,150,0.8) 0%, transparent 70%);
+  opacity:0;
+  transition:0.5s;
+}
+
+/* Login */
+.login{
+  width:300px;
+  padding:30px;
+  background:#0f1f2e;
+  border-radius:15px;
+  box-shadow:0 0 0px #9eff00;
+  transform:translateX(100px);
+  opacity:0;
+  transition:0.5s;
+}
+
+.login.active{
+  transform:translateX(0);
+  opacity:1;
+  box-shadow:0 0 25px #9eff00;
+}
+
+.login h2{
+  color:white;
+}
+
+.login input{
+  width:100%;
+  padding:10px;
+  margin-bottom:15px;
+  background:transparent;
+  border:1px solid #9eff00;
+  border-radius:8px;
+  color:white;
+}
+
+.login button{
+  width:100%;
+  padding:10px;
+  background:#9eff00;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<div class="lamp" id="lamp">
+  <div class="top"></div>
+  <div class="stand"></div>
+  <div class="base"></div>
+  <div class="light" id="light"></div>
+</div>
+
+<div class="login" id="login">
+  <h2>Welcome Back</h2>
+  <input type="text" placeholder="Username">
+  <input type="password" placeholder="Password">
+  <button>Login</button>
+</div>
+
+</div>
+
+<script>
+const lamp = document.getElementById("lamp");
+const light = document.getElementById("light");
+const login = document.getElementById("login");
+
+let on = false;
+
+lamp.addEventListener("click", () => {
+  if(!on){
+    light.style.opacity = "1";
+    login.classList.add("active");
+    on = true;
+  }else{
+    light.style.opacity = "0";
+    login.classList.remove("active");
+    on = false;
+  }
+});
+</script>
+
+</body>
+</html>
